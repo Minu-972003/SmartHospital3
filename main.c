@@ -111,7 +111,13 @@ void registerPatient()
     printf("2. Urgent\n");
     printf("3. Critical\n");
     printf("Enter level: ");
+scanf("%d", &urgent[n]);
+
+while(urgent[n] < 1 || urgent[n] > 3)
+{
+    printf("Invalid level. Enter 1, 2 or 3: ");
     scanf("%d", &urgent[n]);
+}
 
     printf("\nSpecialties\n");
 
@@ -121,15 +127,27 @@ void registerPatient()
     }
 
     printf("Enter specialty ID: ");
-    scanf("%d", &spec[n]);
+scanf("%d", &spec[n]);
 
-    spec[n] = spec[n] - 1;
+while(spec[n] < 1 || spec[n] > 4)
+{
+    printf("Invalid specialty ID. Enter 1 to 4: ");
+    scanf("%d", &spec[n]);
+}
+
+spec[n] = spec[n] - 1;
 
     printf("\nIs admitted to ward?\n");
 printf("1. Yes\n");
 printf("0. No\n");
 printf("Enter choice: ");
 scanf("%d", &admit[n]);
+
+while(admit[n] != 0 && admit[n] != 1)
+{
+    printf("Invalid choice. Enter 1 or 0: ");
+    scanf("%d", &admit[n]);
+}
 
 ward[n] = -1;
 days[n] = 0;
@@ -144,9 +162,15 @@ if(admit[n] == 1)
     }
 
     printf("Enter ward ID: ");
-    scanf("%d", &ward[n]);
+scanf("%d", &ward[n]);
 
-    ward[n] = ward[n] - 1;
+while(ward[n] < 1 || ward[n] > 4)
+{
+    printf("Invalid ward ID. Enter 1 to 4: ");
+    scanf("%d", &ward[n]);
+}
+
+ward[n] = ward[n] - 1;
 
     int b = findBed(ward[n]);
 
