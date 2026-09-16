@@ -37,13 +37,49 @@ int days[MAX];
 
 int n = 0;
 
+void registerPatient();
+
 int main()
 {
     printf("====================================\n");
     printf("       SMART HOSPITAL SYSTEM\n");
     printf("====================================\n");
 
-    printf("Hospital system started successfully.\n");
+    registerPatient();
 
     return 0;
+}
+
+void registerPatient()
+{
+    printf("\n========== PATIENT REGISTRATION ==========\n");
+
+    printf("Enter patient name: ");
+    scanf(" %[^\n]", pname[n]);
+
+    printf("Enter age: ");
+    scanf("%d", &age[n]);
+
+    printf("\nEmergency Level\n");
+    printf("1. Normal\n");
+    printf("2. Urgent\n");
+    printf("3. Critical\n");
+    printf("Enter level: ");
+    scanf("%d", &urgent[n]);
+
+    printf("\nSpecialties\n");
+
+    for(int i = 0; i < 4; i++)
+    {
+        printf("%d. %s\n", i + 1, spname[i]);
+    }
+
+    printf("Enter specialty ID: ");
+    scanf("%d", &spec[n]);
+
+    spec[n] = spec[n] - 1;
+
+    n++;
+
+    printf("\nPatient registered successfully.\n");
 }
