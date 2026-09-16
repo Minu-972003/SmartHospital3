@@ -38,6 +38,7 @@ int days[MAX];
 int n = 0;
 
 void registerPatient();
+int findBed(int w);
 
 int main()
 {
@@ -48,6 +49,21 @@ int main()
     registerPatient();
 
     return 0;
+}
+
+int findBed(int w)
+{
+    int i;
+
+    for(i = 0; i < wcap[w]; i++)
+    {
+        if(bed[w][i] == 0)
+        {
+            return i;
+        }
+    }
+
+    return -1;
 }
 
 void registerPatient()
@@ -78,6 +94,48 @@ void registerPatient()
     scanf("%d", &spec[n]);
 
     spec[n] = spec[n] - 1;
+
+    printf("\nIs admitted to ward?\n");
+printf("1. Yes\n");
+printf("0. No\n");
+printf("Enter choice: ");
+scanf("%d", &admit[n]);
+
+ward[n] = -1;
+days[n] = 0;
+
+if(admit[n] == 1)
+{
+    printf("\nWards\n");
+
+    for(int i = 0; i < 4; i++)
+    {
+        printf("%d. %s\n", i + 1, wname[i]);
+    }
+
+    printf("Enter ward ID: ");
+    scanf("%d", &ward[n]);
+
+    ward[n] = ward[n] - 1;
+
+    int b = findBed(ward[n]);
+
+    if(b == -1)
+    {
+        printf("No bed available.\n");
+        admit[n] = 0;
+        ward[n] = -1;
+    }
+    else
+    {
+        printf("Enter number of days: ");
+        scanf("%d", &days[n]);
+
+        bed[ward[n]][b] = 1;
+
+        printf("Bed %d assigned.\n", b + 1);
+    }
+}
 
     n++;
 
