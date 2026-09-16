@@ -34,12 +34,14 @@ int spec[MAX];
 int admit[MAX];
 int ward[MAX];
 int days[MAX];
+int queue[4] = {0};
 
 int n = 0;
 
 void registerPatient();
 int findBed(int w);
 void menu();
+int waitTime(int s);
 
 int main()
 {
@@ -79,6 +81,11 @@ void menu()
         }
 
     } while(choice != 2);
+}
+
+int waitTime(int s)
+{
+    return queue[s] * sptime[s];
 }
 
 int findBed(int w)
@@ -136,6 +143,12 @@ while(spec[n] < 1 || spec[n] > 4)
 }
 
 spec[n] = spec[n] - 1;
+
+int wait = waitTime(spec[n]);
+
+printf("Estimated waiting time: %d minutes\n", wait);
+
+queue[spec[n]]++;
 
     printf("\nIs admitted to ward?\n");
 printf("1. Yes\n");
