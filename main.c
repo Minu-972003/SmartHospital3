@@ -39,6 +39,7 @@ int n = 0;
 
 void registerPatient();
 int findBed(int w);
+void menu();
 
 int main()
 {
@@ -46,9 +47,38 @@ int main()
     printf("       SMART HOSPITAL SYSTEM\n");
     printf("====================================\n");
 
-    registerPatient();
+    menu();
 
     return 0;
+}
+
+void menu()
+{
+    int choice;
+
+    do
+    {
+        printf("\n========== MAIN MENU ==========\n");
+        printf("1. Register Patient\n");
+        printf("2. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch(choice)
+        {
+            case 1:
+                registerPatient();
+                break;
+
+            case 2:
+                printf("\nThank you for using the system.\n");
+                break;
+
+            default:
+                printf("\nInvalid choice.\n");
+        }
+
+    } while(choice != 2);
 }
 
 int findBed(int w)
