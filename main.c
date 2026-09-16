@@ -42,6 +42,7 @@ void registerPatient();
 int findBed(int w);
 void menu();
 int waitTime(int s);
+float surcharge(int s, int u);
 
 int main()
 {
@@ -86,6 +87,22 @@ void menu()
 int waitTime(int s)
 {
     return queue[s] * sptime[s];
+}
+
+float surcharge(int s, int u)
+{
+    if(u == 1)
+    {
+        return 0;
+    }
+    else if(u == 2)
+    {
+        return spfee[s] * 0.20;
+    }
+    else
+    {
+        return spfee[s] * 0.50;
+    }
 }
 
 int findBed(int w)
