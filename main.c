@@ -44,6 +44,7 @@ void menu();
 int waitTime(int s);
 float surcharge(int s, int u);
 float wardCost(int w, int d);
+float grossTotal(int s, int u, int w, int d);
 
 int main()
 {
@@ -114,6 +115,11 @@ float wardCost(int w, int d)
     }
 
     return wrate[w] * d;
+}
+
+float grossTotal(int s, int u, int w, int d)
+{
+    return spfee[s] + surcharge(s, u) + wardCost(w, d);
 }
 
 int findBed(int w)
