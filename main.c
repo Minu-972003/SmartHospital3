@@ -267,6 +267,22 @@ ward[n] = ward[n] - 1;
     disc = discount(total, age[n]);
     final = finalAmount(total, disc);
 
+    printf("\n========== PATIENT BILL ==========\n");
+printf("Patient Name: %s\n", pname[n]);
+printf("Age: %d\n", age[n]);
+printf("Specialty: %s\n", spname[spec[n]]);
+printf("Urgency Level: %d\n", urgent[n]);
+
+printf("\nBase Consultation Fee: LKR %.2f\n", spfee[spec[n]]);
+printf("Emergency Surcharge: LKR %.2f\n", sur);
+printf("Ward Stay Cost: LKR %.2f\n", wc);
+printf("Gross Total: LKR %.2f\n", total);
+printf("Age Subsidy Discount: LKR %.2f\n", disc);
+printf("Final Payable Amount: LKR %.2f\n", final);
+printf("Estimated Waiting Time: %d minutes\n", wait);
+
+printf("==================================\n");
+
     n++;
 
     printf("\nPatient registered successfully.\n");
