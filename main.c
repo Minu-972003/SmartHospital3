@@ -46,6 +46,7 @@ float surcharge(int s, int u);
 float wardCost(int w, int d);
 float grossTotal(int s, int u, int w, int d);
 float discount(float total, int a);
+float finalAmount(float total, float disc);
 
 int main()
 {
@@ -131,6 +132,11 @@ float discount(float total, int a)
     }
 
     return 0;
+}
+
+float finalAmount(float total, float disc)
+{
+    return total - disc;
 }
 
 int findBed(int w)
