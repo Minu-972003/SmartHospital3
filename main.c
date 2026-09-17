@@ -43,6 +43,7 @@ int findBed(int w);
 void menu();
 int waitTime(int s);
 float surcharge(int s, int u);
+float wardCost(int w, int d);
 
 int main()
 {
@@ -103,6 +104,16 @@ float surcharge(int s, int u)
     {
         return spfee[s] * 0.50;
     }
+}
+
+float wardCost(int w, int d)
+{
+    if(w == -1)
+    {
+        return 0;
+    }
+
+    return wrate[w] * d;
 }
 
 int findBed(int w)
