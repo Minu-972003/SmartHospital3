@@ -156,6 +156,12 @@ int findBed(int w)
 
 void registerPatient()
 {
+    float sur;
+    float wc;
+    float total;
+    float disc;
+    float final;
+
     printf("\n========== PATIENT REGISTRATION ==========\n");
 
     printf("Enter patient name: ");
@@ -254,6 +260,12 @@ ward[n] = ward[n] - 1;
         printf("Bed %d assigned.\n", b + 1);
     }
 }
+
+    sur = surcharge(spec[n], urgent[n]);
+    wc = wardCost(ward[n], days[n]);
+    total = grossTotal(spec[n], urgent[n], ward[n], days[n]);
+    disc = discount(total, age[n]);
+    final = finalAmount(total, disc);
 
     n++;
 
