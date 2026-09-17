@@ -45,6 +45,7 @@ int waitTime(int s);
 float surcharge(int s, int u);
 float wardCost(int w, int d);
 float grossTotal(int s, int u, int w, int d);
+float discount(float total, int a);
 
 int main()
 {
@@ -120,6 +121,16 @@ float wardCost(int w, int d)
 float grossTotal(int s, int u, int w, int d)
 {
     return spfee[s] + surcharge(s, u) + wardCost(w, d);
+}
+
+float discount(float total, int a)
+{
+    if(a < 5 || a > 65)
+    {
+        return total * 0.15;
+    }
+
+    return 0;
 }
 
 int findBed(int w)
