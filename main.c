@@ -68,25 +68,30 @@ void menu()
     {
         printf("\n========== MAIN MENU ==========\n");
         printf("1. Register Patient\n");
-        printf("2. Exit\n");
+        printf("2. View Bed Status\n");
+        printf("3. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
         switch(choice)
         {
             case 1:
-                registerPatient();
-                break;
+              registerPatient();
+              break;
 
             case 2:
-                printf("\nThank you for using the system.\n");
-                break;
+              bedStatus();
+              break;
+
+            case 3:
+              printf("\nThank you for using the system.\n");
+              break;
 
             default:
                 printf("\nInvalid choice.\n");
         }
 
-    } while(choice != 2);
+    }   while(choice != 3);
 }
 
 int waitTime(int s)
