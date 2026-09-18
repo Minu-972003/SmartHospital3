@@ -56,6 +56,7 @@ void priorityList();
 void reports();
 void urgencyReport();
 void moneyReport();
+void bedReport();
 
 int main()
 {
@@ -251,6 +252,7 @@ void reports()
 
     urgencyReport();
     moneyReport();
+    bedReport();
 }
 
 void moneyReport()
@@ -267,6 +269,34 @@ void moneyReport()
 
     printf("\nTotal Revenue: LKR %.2f\n", revenue);
     printf("Total Discounts: LKR %.2f\n", discounts);
+}
+
+void bedReport()
+{
+    int i;
+    int j;
+    int occupied;
+    float percent;
+
+    printf("\nBed Occupancy Report\n");
+
+    for(i = 0; i < 4; i++)
+    {
+        occupied = 0;
+
+        for(j = 0; j < wcap[i]; j++)
+        {
+            if(bed[i][j] == 1)
+            {
+                occupied++;
+            }
+        }
+
+        percent = (occupied * 100.0) / wcap[i];
+
+        printf("%s: %d/%d beds occupied (%.2f%%)\n",
+               wname[i], occupied, wcap[i], percent);
+    }
 }
 
 void urgencyReport()
