@@ -47,6 +47,7 @@ float wardCost(int w, int d);
 float grossTotal(int s, int u, int w, int d);
 float discount(float total, int a);
 float finalAmount(float total, float disc);
+void bedStatus();
 
 int main()
 {
@@ -152,6 +153,31 @@ int findBed(int w)
     }
 
     return -1;
+}
+
+void bedStatus()
+{
+    int i;
+    int j;
+
+    printf("\n========== BED STATUS ==========\n");
+
+    for(i = 0; i < 4; i++)
+    {
+        printf("\n%s\n", wname[i]);
+
+        for(j = 0; j < wcap[i]; j++)
+        {
+            if(bed[i][j] == 0)
+            {
+                printf("Bed %d: Available\n", j + 1);
+            }
+            else
+            {
+                printf("Bed %d: Occupied\n", j + 1);
+            }
+        }
+    }
 }
 
 void registerPatient()
