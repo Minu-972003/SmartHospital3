@@ -49,6 +49,7 @@ float discount(float total, int a);
 float finalAmount(float total, float disc);
 void bedStatus();
 void priorityList();
+void reports();
 
 int main()
 {
@@ -71,7 +72,8 @@ void menu()
         printf("1. Register Patient\n");
         printf("2. View Bed Status\n");
         printf("3. View Patient Priority List\n");
-        printf("4. Exit\n");
+        printf("4. View Reports\n");
+        printf("5. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
@@ -90,14 +92,18 @@ void menu()
                break;
 
             case 4:
-               printf("\nThank you for using the system.\n");
+               reports();
                break;
+
+            case 5:
+                printf("\nThank you for using the system.\n");
+                break;
 
             default:
                printf("\nInvalid option. Please enter a valid option.\n");
         }
 
-    }    while(choice != 4);
+    } while(choice != 5);
 }
 
 int waitTime(int s)
@@ -231,6 +237,12 @@ void priorityList()
         printf("%d. %s - Level %d\n",
                i + 1, pname[order[i]], urgent[order[i]]);
     }
+}
+
+void reports()
+{
+    printf("\n========== HOSPITAL REPORTS ==========\n");
+    printf("Reports will be displayed here.\n");
 }
 
 void registerPatient()
