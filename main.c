@@ -50,6 +50,7 @@ float finalAmount(float total, float disc);
 void bedStatus();
 void priorityList();
 void reports();
+void urgencyReport();
 
 int main()
 {
@@ -242,7 +243,37 @@ void priorityList()
 void reports()
 {
     printf("\n========== HOSPITAL REPORTS ==========\n");
-    printf("Reports will be displayed here.\n");
+
+    urgencyReport();
+}
+
+void urgencyReport()
+{
+    int normal = 0;
+    int urgentCount = 0;
+    int critical = 0;
+    int i;
+
+    for(i = 0; i < n; i++)
+    {
+        if(urgent[i] == 1)
+        {
+            normal++;
+        }
+        else if(urgent[i] == 2)
+        {
+            urgentCount++;
+        }
+        else if(urgent[i] == 3)
+        {
+            critical++;
+        }
+    }
+
+    printf("\nPatient Count by Urgency Level\n");
+    printf("Normal: %d\n", normal);
+    printf("Urgent: %d\n", urgentCount);
+    printf("Critical: %d\n", critical);
 }
 
 void registerPatient()
