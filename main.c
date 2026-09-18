@@ -1,31 +1,31 @@
 #include <stdio.h>
 #define MAX 100
 
-char spname[4][30] = {
+const char spname[4][30] = {
     "General Practice (OPD)",
     "Paediatrics",
     "Cardiology",
     "Neurology"
 };
 
-float spfee[4] = {1500, 2500, 4500, 5000};
+const float spfee[4] = {1500, 2500, 4500, 5000};
 
-int sptime[4] = {15, 20, 30, 30};
+const int sptime[4] = {15, 20, 30, 30};
 
-int spcap[4] = {30, 20, 12, 10};
+const int spcap[4] = {30, 20, 12, 10};
 
-char wname[4][30] = {
+const char wname[4][30] = {
     "General Ward",
     "Paediatric Ward",
     "Surgical Ward",
     "ICU"
 };
 
-float wrate[4] = {3000, 6000, 12000, 25000};
+const float wrate[4] = {3000, 6000, 12000, 25000};
 
-int wcap[4] = {20, 10, 10, 5};
+const int wcap[4] = {20, 10, 10, 5};
 
-int bed[4][20] = {0};
+ int bed[4][20] = {0};
 
 char pname[MAX][50];
 int age[MAX];
@@ -351,6 +351,7 @@ void urgencyReport()
     }
 
     printf("\nPatient Count by Urgency Level\n");
+    printf("Total Patients: %d\n", n);
     printf("Normal: %d\n", normal);
     printf("Urgent: %d\n", urgentCount);
     printf("Critical: %d\n", critical);
