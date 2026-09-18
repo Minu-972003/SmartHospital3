@@ -34,6 +34,10 @@ int spec[MAX];
 int admit[MAX];
 int ward[MAX];
 int days[MAX];
+
+float patientTotal[MAX];
+float patientDiscount[MAX];
+
 int queue[4] = {0};
 
 int n = 0;
@@ -51,6 +55,7 @@ void bedStatus();
 void priorityList();
 void reports();
 void urgencyReport();
+void moneyReport();
 
 int main()
 {
@@ -247,6 +252,8 @@ void reports()
     urgencyReport();
 }
 
+
+
 void urgencyReport()
 {
     int normal = 0;
@@ -388,6 +395,9 @@ ward[n] = ward[n] - 1;
     total = grossTotal(spec[n], urgent[n], ward[n], days[n]);
     disc = discount(total, age[n]);
     final = finalAmount(total, disc);
+
+    patientTotal[n] = final;
+    patientDiscount[n] = disc;
 
     printf("\n========== PATIENT BILL ==========\n");
 printf("Patient Name: %s\n", pname[n]);
