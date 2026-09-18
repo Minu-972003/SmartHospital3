@@ -250,9 +250,24 @@ void reports()
     printf("\n========== HOSPITAL REPORTS ==========\n");
 
     urgencyReport();
+    moneyReport();
 }
 
+void moneyReport()
+{
+    float revenue = 0;
+    float discounts = 0;
+    int i;
 
+    for(i = 0; i < n; i++)
+    {
+        revenue = revenue + patientTotal[i];
+        discounts = discounts + patientDiscount[i];
+    }
+
+    printf("\nTotal Revenue: LKR %.2f\n", revenue);
+    printf("Total Discounts: LKR %.2f\n", discounts);
+}
 
 void urgencyReport()
 {
