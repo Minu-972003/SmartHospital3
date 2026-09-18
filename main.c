@@ -57,6 +57,7 @@ void reports();
 void urgencyReport();
 void moneyReport();
 void bedReport();
+void highestPatient();
 
 int main()
 {
@@ -253,6 +254,7 @@ void reports()
     urgencyReport();
     moneyReport();
     bedReport();
+    highestPatient();
 }
 
 void moneyReport()
@@ -297,6 +299,32 @@ void bedReport()
         printf("%s: %d/%d beds occupied (%.2f%%)\n",
                wname[i], occupied, wcap[i], percent);
     }
+}
+
+void highestPatient()
+{
+    int i;
+    int highest;
+
+    if(n == 0)
+    {
+        printf("\nNo patients registered yet.\n");
+        return;
+    }
+
+    highest = 0;
+
+    for(i = 1; i < n; i++)
+    {
+        if(patientTotal[i] > patientTotal[highest])
+        {
+            highest = i;
+        }
+    }
+
+    printf("\nHighest-Paying Patient\n");
+    printf("Patient Name: %s\n", pname[highest]);
+    printf("Final Payable Amount: LKR %.2f\n", patientTotal[highest]);
 }
 
 void urgencyReport()
