@@ -48,6 +48,7 @@ float grossTotal(int s, int u, int w, int d);
 float discount(float total, int a);
 float finalAmount(float total, float disc);
 void bedStatus();
+void priorityList();
 
 int main()
 {
@@ -182,6 +183,48 @@ void bedStatus()
                 printf("Bed %d: Occupied\n", j + 1);
             }
         }
+    }
+}
+
+void priorityList()
+{
+    int order[MAX];
+    int i;
+    int j;
+    int temp;
+    int min;
+
+    for(i = 0; i < n; i++)
+    {
+        order[i] = i;
+    }
+
+    for(i = 0; i < n - 1; i++)
+    {
+        min = i;
+
+        for(j = i + 1; j < n; j++)
+        {
+            if(urgent[order[j]] > urgent[order[min]])
+            {
+                min = j;
+            }
+        }
+
+        if(min != i)
+        {
+            temp = order[i];
+            order[i] = order[min];
+            order[min] = temp;
+        }
+    }
+
+    printf("\n========== PATIENT PRIORITY LIST ==========\n");
+
+    for(i = 0; i < n; i++)
+    {
+        printf("%d. %s - Level %d\n",
+               i + 1, pname[order[i]], urgent[order[i]]);
     }
 }
 
