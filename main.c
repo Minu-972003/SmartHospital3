@@ -195,11 +195,11 @@ void bedStatus()
         {
             if(bed[i][j] == 0)
             {
-                printf("Bed %d: Available\n", j + 1);
+                printf("Bed %2d: Available\n", j + 1);
             }
             else
             {
-                printf("Bed %d: Occupied\n", j + 1);
+                printf("Bed %-2d: Occupied\n", j + 1);
             }
         }
     }
@@ -239,12 +239,14 @@ void priorityList()
     }
 
     printf("\n========== PATIENT PRIORITY LIST ==========\n");
+printf("No. Patient Name          Urgency\n");
+printf("------------------------------------------\n");
 
-    for(i = 0; i < n; i++)
-    {
-        printf("%d. %s - Level %d\n",
-               i + 1, pname[order[i]], urgent[order[i]]);
-    }
+for(i = 0; i < n; i++)
+{
+    printf("%-3d %-20s Level %d\n",
+           i + 1, pname[order[i]], urgent[order[i]]);
+}
 }
 
 void reports()
@@ -269,8 +271,9 @@ void moneyReport()
         discounts = discounts + patientDiscount[i];
     }
 
-    printf("\nTotal Revenue: LKR %.2f\n", revenue);
-    printf("Total Discounts: LKR %.2f\n", discounts);
+    printf("\n----- Financial Summary -----\n");
+    printf("%-20s: LKR %.2f\n", "Total Revenue", revenue);
+    printf("%-20s: LKR %.2f\n", "Total Discounts", discounts);
 }
 
 void bedReport()
@@ -280,7 +283,7 @@ void bedReport()
     int occupied;
     float percent;
 
-    printf("\nBed Occupancy Report\n");
+    printf("\n----- Bed Occupancy -----\n");
 
     for(i = 0; i < 4; i++)
     {
@@ -296,7 +299,7 @@ void bedReport()
 
         percent = (occupied * 100.0) / wcap[i];
 
-        printf("%s: %d/%d beds occupied (%.2f%%)\n",
+        printf("%-18s: %d/%d beds (%.2f%%)\n",
                wname[i], occupied, wcap[i], percent);
     }
 }
@@ -322,9 +325,10 @@ void highestPatient()
         }
     }
 
-    printf("\nHighest-Paying Patient\n");
-    printf("Patient Name: %s\n", pname[highest]);
-    printf("Final Payable Amount: LKR %.2f\n", patientTotal[highest]);
+    printf("\n----- Highest-Paying Patient -----\n");
+    printf("%-20s: %s\n", "Patient Name", pname[highest]);
+    printf("%-20s: LKR %.2f\n",
+           "Final Payable", patientTotal[highest]);
 }
 
 void urgencyReport()
@@ -350,11 +354,11 @@ void urgencyReport()
         }
     }
 
-    printf("\nPatient Count by Urgency Level\n");
-    printf("Total Patients: %d\n", n);
-    printf("Normal: %d\n", normal);
-    printf("Urgent: %d\n", urgentCount);
-    printf("Critical: %d\n", critical);
+    printf("\n----- Patient Summary -----\n");
+    printf("%-15s: %d\n", "Total Patients", n);
+    printf("%-15s: %d\n", "Normal", normal);
+    printf("%-15s: %d\n", "Urgent", urgentCount);
+    printf("%-15s: %d\n", "Critical", critical);
 }
 
 void registerPatient()
@@ -473,21 +477,32 @@ ward[n] = ward[n] - 1;
     patientTotal[n] = final;
     patientDiscount[n] = disc;
 
-    printf("\n========== PATIENT BILL ==========\n");
-printf("Patient Name: %s\n", pname[n]);
-printf("Age: %d\n", age[n]);
-printf("Specialty: %s\n", spname[spec[n]]);
-printf("Urgency Level: %d\n", urgent[n]);
+printf("\n====================================================\n");
+printf("              SMART HOSPITAL ADMISSION & BILL\n");
+printf("====================================================\n");
 
-printf("\nBase Consultation Fee: LKR %.2f\n", spfee[spec[n]]);
-printf("Emergency Surcharge: LKR %.2f\n", sur);
-printf("Ward Stay Cost: LKR %.2f\n", wc);
-printf("Gross Total: LKR %.2f\n", total);
-printf("Age Subsidy Discount: LKR %.2f\n", disc);
-printf("Final Payable Amount: LKR %.2f\n", final);
+printf("Patient Name        : %s\n", pname[n]);
+printf("Age                 : %d Years\n", age[n]);
+printf("Specialty           : %s\n", spname[spec[n]]);
+printf("Urgency Level       : Level %d\n", urgent[n]);
+
+printf("----------------------------------------------------\n");
+
+printf("Base Consultation Fee : LKR %.2f\n", spfee[spec[n]]);
+printf("Emergency Surcharge   : LKR %.2f\n", sur);
+printf("Ward Stay Cost        : LKR %.2f\n", wc);
+
+printf("----------------------------------------------------\n");
+
+printf("Gross Total Bill      : LKR %.2f\n", total);
+printf("Age Subsidy Discount  : LKR %.2f\n", disc);
+
+printf("----------------------------------------------------\n");
+
+printf("Final Payable Amount  : LKR %.2f\n", final);
 printf("Estimated Waiting Time: %d minutes\n", wait);
 
-printf("==================================\n");
+printf("====================================================\n");
 
     n++;
 
