@@ -25,7 +25,7 @@ const float wrate[4] = {3000, 6000, 12000, 25000};
 
 const int wcap[4] = {20, 10, 10, 5};
 
- int bed[4][20] = {0};
+int bed[4][20] = {0};
 
 char pname[MAX][50];
 int age[MAX];
@@ -59,11 +59,16 @@ void moneyReport();
 void bedReport();
 void highestPatient();
 
+void loadBeds();
+void saveBeds();
+
 int main()
 {
-    printf("====================================\n");
-    printf("       SMART HOSPITAL SYSTEM\n");
-    printf("====================================\n");
+    printf("========================================\n");
+    printf("        SMART HOSPITAL SYSTEM\n");
+    printf("========================================\n");
+
+    loadBeds();
 
     menu();
 
@@ -506,5 +511,58 @@ printf("====================================================\n");
 
     n++;
 
+    saveBeds();
+
     printf("\nPatient registered successfully.\n");
 }
+
+void loadBeds()
+{
+    FILE *file;
+    int i;
+    int j;
+
+    file = fopen("beds_status.txt", "r");
+
+    if(file == NULL)
+    {
+        return;
+    }
+
+    for(i = 0; i < 4; i++)
+    {
+        for(j = 0; j < wcap[i]; j++)
+        {
+            fscanf(file, "%d", &bed[i][j]);
+        }
+    }
+
+    fclose(file);
+}
+
+void saveBeds()
+{
+    FILE *file;
+    int i;
+    int j;
+
+    file = fopen("beds_status.txt", "w");
+
+    if(file == NULL)
+    {
+        return;
+    }
+
+    for(i = 0; i < 4; i++)
+    {
+        for(j = 0; j < wcap[i]; j++)
+        {
+            fprintf(file, "%d ", bed[i][j]);
+        }
+
+        fprintf(file, "\n");
+    }
+
+    fclose(file);
+}
+
