@@ -231,10 +231,12 @@ void priorityList()
 
         for(j = i + 1; j < n; j++)
         {
-            if(urgent[order[j]] > urgent[order[min]])
-            {
-                min = j;
-            }
+            if(urgent[order[j]] > urgent[order[min]] ||
+              (urgent[order[j]] == urgent[order[min]] &&
+               order[j] < order[min]))
+{
+               min = j;
+}
         }
 
         if(min != i)
