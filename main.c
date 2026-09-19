@@ -62,6 +62,8 @@ void highestPatient();
 void loadBeds();
 void saveBeds();
 
+void savePatientRecord(int wait);
+
 int main()
 {
     printf("========================================\n");
@@ -509,9 +511,10 @@ printf("Estimated Waiting Time: %d minutes\n", wait);
 
 printf("====================================================\n");
 
-    n++;
-
     saveBeds();
+    savePatientRecord(wait);
+
+    n++;
 
     printf("\nPatient registered successfully.\n");
 }
@@ -562,6 +565,30 @@ void saveBeds()
 
         fprintf(file, "\n");
     }
+
+    fclose(file);
+}
+
+void savePatientRecord(int wait)
+{
+    FILE *file;
+
+    file = fopen("patient_records.txt", "a");
+
+    if(file == NULL)
+    {
+        return;
+    }
+
+    fprintf(file, "Patient Name: %s\n", pname[n]);
+    fprintf(file, "Age: %d\n", age[n]);
+    fprintf(file, "Specialty: %s\n", spname[spec[n]]);
+    fprintf(file, "Urgency Level: %d\n", urgent[n]);
+    fprintf(file, "Final Payable Amount: LKR %.2f\n", patientTotal[n]);
+    fprintf(file, "Discount: LKR %.2f\n", patientDiscount[n]);
+    fprintf(file, "Waiting Time: %d minutes\n", wait);
+
+    fprintf(file, "----------------------------------------\n");
 
     fclose(file);
 }

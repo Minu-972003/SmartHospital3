@@ -1,0 +1,16 @@
+Patient Name: minu
+Age: 15
+Specialty: General Practice (OPD)
+Urgency Level: 1
+Final Payable Amount: LKR 16500.00
+Discount: LKR 0.00
+Waiting Time: 0 minutes
+----------------------------------------
+Patient Name: shenal
+Age: 48
+Specialty: Cardiology
+Urgency Level: 3
+Final Payable Amount: LKR 6750.00
+Discount: LKR 0.00
+Waiting Time: 0 minutes
+----------------------------------------
